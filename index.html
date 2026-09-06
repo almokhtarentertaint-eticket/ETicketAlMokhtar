@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Mokhtar Ensemble Musical Celebration - Tiket Konser</title>
+    <title>Al Mokhtar Ensemble An Exclusive Night Of Sholawat - Tiket Konser</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -79,10 +79,10 @@
                 Exclusive Live Performance in Cairo, Egypt
             </div>
             <h1 class="font-heading text-3xl sm:text-5xl md:text-6xl font-extrabold tracking-tight gold-gradient-text leading-tight">
-                Al Mokhtar Ensemble<br/>Musical Celebration
+                Al Mokhtar Ensemble<br/>An Exclusive Night Of Sholawat
             </h1>
             <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light">
-                Nikmati malam kemegahan musik terindah persembahan Al Mokhtar Ensemble. Dapatkan tiket Anda sebelum penutupan pendaftaran.
+                 Satu Malam, Satu Majelis. Satu Cinta Kepada Rasulullah ﷺ Tempat Terbatas - Segera Amankan Tiket Anda 
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 text-sm font-medium pt-2">
@@ -157,7 +157,7 @@
                     <div class="pt-6 border-t border-gray-800 flex items-center justify-between mt-4">
                         <div>
                             <span class="text-xs text-gray-500 block">Harga Tiket:</span>
-                            <span class="font-heading text-lg font-bold text-gold-400">Rp 70.000 <span class="text-xs text-gray-400 font-normal">(~250 EGP)</span></span>
+                            <span class="font-heading text-lg font-bold text-gold-400">Rp 70.000 <span class="text-xs text-gray-400 font-normal"></span></span>
                         </div>
                         <button onclick="openBookingModal()" class="bg-gold-500 hover:bg-gold-600 text-black px-6 py-2.5 rounded-xl font-bold text-sm transition duration-200">
                             Pesan Tiket
@@ -254,11 +254,11 @@
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1">Jumlah Tiket *</label>
                     <select id="custQty" onchange="renderHolderInputs()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
-                        <option value="1">1 Tiket (Rp 70.000 / ~250 EGP)</option>
-                        <option value="2">2 Tiket (Rp 140.000 / ~500 EGP)</option>
-                        <option value="3">3 Tiket (Rp 210.000 / ~750 EGP)</option>
-                        <option value="4">4 Tiket (Rp 280.000 / ~1.000 EGP)</option>
-                        <option value="5">5 Tiket (Rp 350.000 / ~1.250 EGP)</option>
+                        <option value="1">1 Tiket (Rp 70.000)</option>
+                        <option value="2">2 Tiket (Rp 140.000)</option>
+                        <option value="3">3 Tiket (Rp 210.000)</option>
+                        <option value="4">4 Tiket (Rp 280.000)</option>
+                        <option value="5">5 Tiket (Rp 350.000)</option>
                     </select>
                 </div>
 
@@ -303,7 +303,6 @@
                     <span class="text-xs text-gray-300 font-semibold">Total Pembayaran:</span>
                     <div class="text-right">
                         <span id="summaryTotalRupiah" class="font-heading text-lg font-bold text-gold-400 block">Rp 70.000</span>
-                        <span id="summaryTotalEgp" class="text-[11px] text-gray-400 block">(~250 EGP)</span>
                     </div>
                 </div>
             </div>
@@ -342,7 +341,7 @@
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrpJkydxov6jjIKlE5JnrekEkulIape2arPmeFCkJEYTHF-ydOe78c5bXIeQ5jlgyW/exec";
 
         const TICKET_PRICE_IDR = 70000;
-        const TICKET_PRICE_EGP = 250;
+    
 
         let globalOrderData = {};
 
@@ -408,7 +407,6 @@
             const holderNames = Array.from(holderInputs).map(i => i.value.trim()).join(', ');
 
             const totalRupiah = (qty * TICKET_PRICE_IDR).toLocaleString('id-ID');
-            const totalEgp = (qty * TICKET_PRICE_EGP).toLocaleString('id-ID');
             const orderId = 'AME-' + Math.floor(100000 + Math.random() * 900000);
 
             globalOrderData = {
@@ -419,13 +417,11 @@
                 jumlah_tiket: qty,
                 nama_pemegang: holderNames,
                 total_harga: `Rp ${totalRupiah}`,
-                total_egp: totalEgp,
                 metode_pembayaran: "SEABANK"
             };
 
             document.getElementById('summaryQtyText').innerText = `${qty} Tiket`;
             document.getElementById('summaryTotalRupiah').innerText = `Rp ${totalRupiah}`;
-            document.getElementById('summaryTotalEgp').innerText = `(~${totalEgp} EGP)`;
 
             closeBookingModal();
             document.getElementById('proofModal').classList.remove('hidden');
@@ -494,7 +490,7 @@
 
                     // Susun pesan WhatsApp Admin
                     const adminWA = "6282116953115";
-                    const waText = `Halo Admin Al Mokhtar, saya telah mengisi data pemesanan dan mengirimkan bukti pembayaran.\n\n*ID Pesanan:* ${globalOrderData.order_id}\n*Nama Pemesan:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Jumlah Tiket:* ${globalOrderData.jumlah_tiket} Tiket\n*Pemegang Tiket:* ${globalOrderData.nama_pemegang}\n*Total Pembayaran:* ${globalOrderData.total_harga} (~${globalOrderData.total_egp} EGP)\n*Metode:* SEABANK\n\nBukti transfer sudah saya upload di sistem. Mohon diverifikasi dan dikirimkan E-Tiket resminya ya. Terima kasih!`;
+                    const waText = `Halo Admin Al Mokhtar, saya telah mengisi data pemesanan dan mengirimkan bukti pembayaran.\n\n*ID Pesanan:* ${globalOrderData.order_id}\n*Nama Pemesan:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Jumlah Tiket:* ${globalOrderData.jumlah_tiket} Tiket\n*Pemegang Tiket:* ${globalOrderData.nama_pemegang}\n*Total Pembayaran:* ${globalOrderData.total_harga}\n*Metode:* SEABANK\n\nBukti transfer sudah saya upload di sistem. Mohon diverifikasi dan dikirimkan E-Tiket resminya ya. Terima kasih!`;
 
                     // Jeda 1 detik agar data masuk ke Spreadsheet, lalu buka WhatsApp
                     setTimeout(() => {

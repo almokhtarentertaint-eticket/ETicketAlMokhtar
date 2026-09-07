@@ -142,7 +142,7 @@
                         <ul class="text-sm text-gray-300 space-y-2 py-2">
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span>Entry access to the Musical Celebration Concert</span>
+                                <span>Entry access to the Exclusive Night Of Sholawat</span>
                             </li>
                             <li class="flex items-start space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs mt-1"></i>
@@ -328,32 +328,34 @@
         </div>
     </div>
 
-   <!-- MODAL 2: PAYMENT INSTRUCTION & PROOF UPLOAD -->
-<div id="proofModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-    <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
-        <button onclick="closeProofModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-            <i class="fa-solid fa-xmark text-xl"></i>
+   <!-- PROOF & CONFIRMATION MODAL -->
+<div id="proofModal" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 hidden">
+    <div class="bg-gray-950 border border-gold-500/30 w-full max-w-md rounded-2xl p-6 relative shadow-2xl space-y-4 max-h-[90vh] overflow-y-auto">
+        <!-- Close Button -->
+        <button onclick="closeProofModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-lg">
+            <i class="fa-solid fa-xmark"></i>
         </button>
 
-        <div class="space-y-1 border-b border-gray-800 pb-3">
-            <div class="inline-block bg-gold-500/20 text-gold-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1">
+        <!-- Header -->
+        <div>
+            <span class="bg-gold-500/10 text-gold-400 text-[10px] font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider border border-gold-500/20">
                 Final Step
-            </div>
-            <h3 class="font-heading text-xl font-bold text-gold-400">Upload Payment Proof &amp; Confirm</h3>
-            <p class="text-xs text-gray-400">Complete your transfer and upload the payment proof to be redirected to WhatsApp Admin.</p>
+            </span>
+            <h3 class="text-lg font-bold text-white mt-2">UPLOAD PAYMENT PROOF & CONFIRM</h3>
+            <p class="text-xs text-gray-400 mt-1">
+                Complete your transfer and upload the payment proof to be redirected to WhatsApp Admin.
+            </p>
         </div>
 
-        <!-- Billing Details -->
-        <div class="bg-cardbg p-4 rounded-xl border border-gold-500/30 space-y-3">
-            <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-2">
+        <!-- Order Summary Box -->
+        <div class="bg-gray-900/80 p-3 rounded-xl border border-gray-800 text-xs space-y-1.5">
+            <div class="flex justify-between text-gray-400">
                 <span>Order Details:</span>
-                <span id="summaryQtyText" class="font-semibold text-white">1 Ticket</span>
+                <span id="summaryQtyText" class="text-white font-semibold">1 Ticket</span>
             </div>
-            <div class="flex justify-between items-center">
-                <span class="text-xs text-gray-300 font-semibold">Total Payment:</span>
-                <div class="text-right">
-                    <span id="summaryTotalPrice" class="font-heading text-lg font-bold text-gold-400 block">250 EGP / Rp 70.000</span>
-                </div>
+            <div class="flex justify-between items-center pt-1 border-t border-gray-800">
+                <span class="text-gray-400">Total Payment:</span>
+                <span id="summaryTotalPrice" class="text-base font-bold text-gold-400">RP 70.000</span>
             </div>
         </div>
 
@@ -600,31 +602,27 @@
                 try {
                     await fetch(GOOGLE_SCRIPT_URL, {
                         method: 'POST',
-                        mode: 'no-cors', // Menghindari CORS error pada Google Apps Script
+                        mode: 'no-cors',
                         headers: { "Content-Type": "text/plain;charset=utf-8" },
                         body: JSON.stringify(globalOrderData)
                     });
                 } catch (err) {
                     console.log("Background transmission error:", err);
                 }
-const adminWA = "201552295993";
-const waText = `Hello Al Mokhtar Admin, I have filled out the order form:
-- Order ID: ${globalOrderData.order_id}
-- Booker Name: ${globalOrderData.nama_pemesan}
-- Total Ticket: ${globalOrderData.nama_pemegang.split(',').length}
-- Total Price: ${globalOrderData.total_harga}
 
-Please confirm my payment. Thank you!`;
+                const adminWA = "201552295993";
+                const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
 
-const waUrl = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
+                const waUrl = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
 
-// Buka WhatsApp LANGSUNG sebelum timeout agar tidak diblokir Pop-Up Blocker browser
-window.open(waUrl, '_blank');
+                window.open(waUrl, '_blank');
 
-// Baru jalankan penutupan modal setelahnya
-setTimeout(() => {
-  closeProofModal();
-}, 1000);
+                setTimeout(() => {
+                    closeProofModal();
+                    btnFinal.disabled = false;
+                    btnFinal.innerHTML = `<i class="fa-brands fa-whatsapp text-lg"></i> <span>Confirm via Admin WhatsApp</span>`;
+                }, 1000);
+            };
 
             img.onerror = function() {
                 alert("Gagal memproses gambar. Silakan coba unggah foto lain.");
@@ -658,3 +656,5 @@ setTimeout(() => {
         renderHolderInputs();
     });
 </script>
+</body>
+</html>

@@ -607,15 +607,24 @@
                 } catch (err) {
                     console.log("Background transmission error:", err);
                 }
+const adminWA = "201552295993";
+const waText = `Hello Al Mokhtar Admin, I have filled out the order form:
+- Order ID: ${globalOrderData.order_id}
+- Booker Name: ${globalOrderData.nama_pemesan}
+- Total Ticket: ${globalOrderData.nama_pemegang.split(',').length}
+- Total Price: ${globalOrderData.total_harga}
 
-                const adminWA = "201552295993";
-                const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* ${globalOrderData.metode_pembayaran}\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
+Please confirm my payment. Thank you!`;
 
-                setTimeout(() => {
-                    closeProofModal();
-                    window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
-                }, 1000);
-            };
+const waUrl = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
+
+// Buka WhatsApp LANGSUNG sebelum timeout agar tidak diblokir Pop-Up Blocker browser
+window.open(waUrl, '_blank');
+
+// Baru jalankan penutupan modal setelahnya
+setTimeout(() => {
+  closeProofModal();
+}, 1000);
 
             img.onerror = function() {
                 alert("Gagal memproses gambar. Silakan coba unggah foto lain.");

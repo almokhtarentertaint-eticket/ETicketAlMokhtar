@@ -146,7 +146,7 @@
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span>Event Seating</span>
+                                <span><strong>Free Seating:</strong> All Ticket are "free seating", and seats are Available on a first-come, first-served basis. </span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
@@ -157,7 +157,7 @@
                     <div class="pt-6 border-t border-gray-800 flex items-center justify-between mt-4">
                         <div>
                             <span class="text-xs text-gray-500 block">Ticket Price:</span>
-                            <span class="font-heading text-lg font-bold text-gold-400">IDR 70,000 <span class="text-xs text-gray-400 font-normal"></span></span>
+                            <span class="font-heading text-lg font-bold text-gold-400">250 EGP / Rp 70.000</span>
                         </div>
                         <button onclick="openBookingModal()" class="bg-gold-500 hover:bg-gold-600 text-black px-6 py-2.5 rounded-xl font-bold text-sm transition duration-200">
                             Book Ticket
@@ -171,19 +171,43 @@
         <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 max-w-xl mx-auto">
             <h2 class="font-heading text-xl sm:text-2xl font-bold text-white border-b border-gray-800 pb-3 flex items-center space-x-2">
                 <i class="fa-solid fa-credit-card text-gold-500"></i>
-                <span>Payment Method</span>
+                <span>Payment Methods</span>
             </h2>
-            <div class="bg-cardbg p-5 rounded-xl border border-gray-800 space-y-3">
-                <div class="flex items-center justify-between">
-                    <span class="text-sm font-semibold text-white flex items-center gap-2">
-                        <i class="fa-solid fa-building-columns text-blue-400"></i> Bank Transfer (Indonesia)
-                    </span>
-                    <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">SEABANK</span>
+            <div class="space-y-4">
+                <!-- InstaPay Egypt -->
+                <div class="bg-cardbg p-5 rounded-xl border border-gray-800 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-mobile-screen-button text-purple-400"></i> InstaPay (Egypt)
+                        </span>
+                        <span class="text-xs bg-purple-500/10 text-purple-400 px-2 py-0.5 rounded">EGP</span>
+                    </div>
+                    <div class="text-xs text-gray-400 space-y-1">
+                        <p><strong class="text-gray-300">Method:</strong> InstaPay</p>
+                        <p><strong class="text-gray-300">Account / Number:</strong> <span class="text-yellow-400 font-mono text-sm">01552295993</span></p>
+                        <p><strong class="text-gray-300">Account Holder:</strong> <span class="text-yellow-400 font-mono text-sm">Muhammad Saepul Bahri</span></p>
+                    </div>
                 </div>
-                <div class="text-xs text-gray-400 space-y-1">
-                    <p><strong class="text-gray-300">Bank:</strong> SEABANK </p>
-                    <p><strong class="text-gray-300">Account Number:</strong> <span class="text-gold-400 font-mono text-sm">901525253273</span></p>
-                    <p><strong class="text-gray-300">Account Holder:</strong> MUHAMMAD SAEPUL BAHRI</p>
+
+                <!-- Bank Transfer Indonesia -->
+                <div class="bg-cardbg p-5 rounded-xl border border-gray-800 space-y-3">
+                    <div class="flex items-center justify-between">
+                        <span class="text-sm font-semibold text-white flex items-center gap-2">
+                            <i class="fa-solid fa-building-columns text-blue-400"></i> Bank Transfer (Indonesia)
+                        </span>
+                        <span class="text-xs bg-blue-500/10 text-blue-400 px-2 py-0.5 rounded">IDR</span>
+                    </div>
+                    <div class="text-xs text-gray-400 space-y-1">
+                        <p><strong class="text-gray-300">Bank:</strong> SEABANK</p>
+                        <p><strong class="text-gray-300">Account Number:</strong> <span class="text-yellow-400 font-mono text-sm">901525253273</span></p>
+                        <p><strong class="text-gray-300">Account Holder:</strong> <span class="text-yellow-400 font-mono text-sm">MUHAMMAD SAEPUL BAHRI</span></p>
+                    </div>
+                </div>
+
+                <!-- Catatan Free Seating -->
+                <div class="bg-gold-500/10 border border-gold-500/30 p-3 rounded-lg text-xs text-gold-300 flex items-start space-x-2">
+                    <i class="fa-solid fa-circle-info mt-0.5"></i>
+                    <span><strong>Catatan Penting:</strong> Semua tiket menggunakan sistem <strong>Free Seating</strong>. Tempat duduk di lokasi acara tersedia berdasarkan siapa yang datang terlebih dahulu (first come, first served).</span>
                 </div>
             </div>
         </section>
@@ -251,15 +275,15 @@
             <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1">Booker Name / Primary Contact *</label>
-                    <input type="text" id="custName" required placeholder="Example: Ahmad Fauzi" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                    <input type="text" id="custName" required placeholder="Example: Ahmad Fauzi" oninput="syncFirstTicketHolder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
                         <label class="block text-xs font-semibold text-gray-300 mb-1">Active Email *</label>
-                        <input type="email" id="custEmail" required placeholder="name@email.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                        <input type="email" id="custEmail" required placeholder="name@domain.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                         <p class="text-[11px] text-yellow-400/90 mt-1 flex items-center gap-1">
-                            <i class="fa-solid fa-circle-info"></i> Active email is required for E-Ticket.
+                            <i class="fa-solid fa-circle-info"></i> Any email provider (Gmail, iCloud, Yahoo, Outlook, etc.) is supported.
                         </p>
                     </div>
                     <div>
@@ -271,21 +295,30 @@
                 <div>
                     <label class="block text-xs font-semibold text-gray-300 mb-1">Number of Tickets *</label>
                     <select id="custQty" onchange="renderHolderInputs()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
-                        <option value="1">1 Ticket (IDR 70,000)</option>
-                        <option value="2">2 Tickets (IDR 140,000)</option>
-                        <option value="3">3 Tickets (IDR 210,000)</option>
-                        <option value="4">4 Tickets (IDR 280,000)</option>
-                        <option value="5">5 Tickets (IDR 350,000)</option>
+                        <option value="1">1 Ticket (250 EGP / Rp 70.000)</option>
+                        <option value="2">2 Tickets (500 EGP / Rp 140.000)</option>
+                        <option value="3">3 Tickets (750 EGP / Rp 210.000)</option>
+                        <option value="4">4 Tickets (1,000 EGP / Rp 280.000)</option>
+                        <option value="5">5 Tickets (1,250 EGP / Rp 350.000)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Select Payment Method *</label>
+                    <select id="custPaymentMethod" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                        <option value="INSTAPAY">InstaPay (Egypt - EGP)</option>
+                        <option value="BANK_TRANSFER_IDR">Bank Transfer Indonesia (IDR)</option>
                     </select>
                 </div>
 
                 <div id="holderNamesSection" class="space-y-3 pt-2 border-t border-gray-800">
                     <label class="block text-xs font-semibold text-gold-400">
-                        <i class="fa-solid fa-user-pen mr-1"></i> Ticket Holder Name (For Each) *
+                        <i class="fa-solid fa-user-pen mr-1"></i> Ticket Holder Names *
                     </label>
                     <div id="holderInputsContainer" class="space-y-2">
                         <!-- Auto Rendered Inputs -->
                     </div>
+                    <p id="holderWarningMsg" class="text-[11px] text-red-400 hidden font-semibold"></p>
                 </div>
 
                 <button type="submit" id="btnSubmitForm" class="w-full bg-gold-500 hover:bg-gold-600 text-black font-bold py-3 rounded-xl transition duration-200 mt-2">
@@ -319,17 +352,14 @@
                 <div class="flex justify-between items-center">
                     <span class="text-xs text-gray-300 font-semibold">Total Payment:</span>
                     <div class="text-right">
-                        <span id="summaryTotalRupiah" class="font-heading text-lg font-bold text-gold-400 block">IDR 70,000</span>
+                        <span id="summaryTotalPrice" class="font-heading text-lg font-bold text-gold-400 block">250 EGP / Rp 70.000</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Account Info -->
-            <div class="bg-cardbg p-4 rounded-xl border border-gray-800 text-xs space-y-2">
-                <p class="text-gray-400 font-medium">Destination Account (SEABANK):</p>
-                <p class="text-sm font-bold text-white">Bank SEABANK (Indonesia)</p>
-                <p class="font-mono text-gold-400 font-bold text-base">901525253273</p>
-                <p class="text-gray-400">Account Holder: MUHAMMAD SAEPUL BAHRI</p>
+            <!-- Dynamic Account Info based on selection -->
+            <div id="paymentInstructionsContainer" class="bg-cardbg p-4 rounded-xl border border-gray-800 text-xs space-y-2">
+                <!-- Will be filled dynamically by JS -->
             </div>
 
             <!-- UPLOAD FORM -->
@@ -356,12 +386,13 @@
     <!-- JAVASCRIPT LOGIC -->
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrpJkydxov6jjIKlE5JnrekEkulIape2arPmeFCkJEYTHF-ydOe78c5bXIeQ5jlgyW/exec";
+        const TICKET_PRICE_EGP = 250;
         const TICKET_PRICE_IDR = 70000;
         let globalOrderData = {};
 
         function openBookingModal() {
             document.getElementById('bookingModal')?.classList.remove('hidden');
-            renderHolderInputs(); // Ensure inputs are rendered upon opening
+            renderHolderInputs();
         }
 
         function closeBookingModal() {
@@ -372,7 +403,6 @@
             document.getElementById('proofModal')?.classList.add('hidden');
         }
 
-        // IMAGE FILE VALIDATION (Max 2 MB & valid formats)
         function validateImageFile(input) {
             const fileErrorMsg = document.getElementById('fileErrorMsg');
             const file = input.files[0];
@@ -402,28 +432,95 @@
         function renderHolderInputs() {
             const qty = parseInt(document.getElementById('custQty').value) || 1;
             const container = document.getElementById('holderInputsContainer');
+            const bookerName = document.getElementById('custName').value.trim();
             container.innerHTML = '';
+
             for (let i = 1; i <= qty; i++) {
-                container.innerHTML += `<input type="text" required placeholder="Ticket Holder Name ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">`;
+                if (i === 1) {
+                    container.innerHTML += `
+                        <div>
+                            <label class="block text-[11px] text-gray-400 mb-0.5">Ticket 1 (Must match Booker Name):</label>
+                            <input type="text" id="holderInput_1" value="${bookerName}" readonly class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-300 cursor-not-allowed">
+                        </div>
+                    `;
+                } else {
+                    container.innerHTML += `
+                        <div>
+                            <label class="block text-[11px] text-gray-400 mb-0.5">Ticket ${i} Holder Name (Cannot be the same as Booker):</label>
+                            <input type="text" required placeholder="Enter guest name for ticket ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                        </div>
+                    `;
+                }
+            }
+        }
+
+        function syncFirstTicketHolder() {
+            const bookerName = document.getElementById('custName').value;
+            const input1 = document.getElementById('holderInput_1');
+            if (input1) {
+                input1.value = bookerName;
             }
         }
         
-        // Render initially just in case
         renderHolderInputs();
 
-        // 1. WHEN FIRST FORM IS SUBMITTED
         function submitOrder(event) {
-            event.preventDefault(); // Mencegah reload halaman
+            event.preventDefault();
 
-            const name = document.getElementById('custName').value;
+            const name = document.getElementById('custName').value.trim();
             const email = document.getElementById('custEmail').value;
             const phone = document.getElementById('custPhone').value;
             const qty = parseInt(document.getElementById('custQty').value) || 1;
+            const paymentMethod = document.getElementById('custPaymentMethod').value;
+            const warningMsg = document.getElementById('holderWarningMsg');
 
-            const holderInputs = document.querySelectorAll('.holder-name-input');
-            const holderNames = Array.from(holderInputs).map(i => i.value.trim()).join(', ');
+            let holderNamesArr = [name];
+            if (qty > 1) {
+                const extraInputs = document.querySelectorAll('.holder-name-input');
+                for (let input of extraInputs) {
+                    const val = input.value.trim();
+                    if (!val) {
+                        warningMsg.innerText = "❌ Please fill in all ticket holder names!";
+                        warningMsg.classList.remove('hidden');
+                        return;
+                    }
+                    if (val.toLowerCase() === name.toLowerCase()) {
+                        warningMsg.innerText = `❌ Ticket holder names for tickets 2 and above cannot be the same as the Booker Name ("${name}")!`;
+                        warningMsg.classList.remove('hidden');
+                        input.focus();
+                        return;
+                    }
+                    holderNamesArr.push(val);
+                }
+            }
+            warningMsg.classList.add('hidden');
 
-            const totalRupiah = (qty * TICKET_PRICE_IDR).toLocaleString('id-ID');
+            const holderNamesStr = holderNamesArr.join(', ');
+
+            let totalPrice = "";
+            let paymentDetailsHtml = "";
+
+            if (paymentMethod === "INSTAPAY") {
+                totalPrice = (qty * TICKET_PRICE_EGP) + " EGP";
+                paymentDetailsHtml = `
+                    <p class="text-gray-400 font-medium">Destination Account (InstaPay):</p>
+                    <p class="text-sm font-bold text-white">InstaPay (Egypt)</p>
+                    <p class="font-mono text-yellow-400 font-bold text-base">01552295993</p>
+                    <p class="text-gray-400">Account Holder: <span class="text-yellow-400">Muhammad Saepul Bahri</span></p>
+                    <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: Tempat duduk tersedia berdasarkan siapa yang datang terlebih dahulu.</p>
+                `;
+            } else {
+                let totalIdrFormatted = (qty * TICKET_PRICE_IDR).toLocaleString('id-ID');
+                totalPrice = "Rp " + totalIdrFormatted;
+                paymentDetailsHtml = `
+                    <p class="text-gray-400 font-medium">Destination Account (Indonesia Bank):</p>
+                    <p class="text-sm font-bold text-white">SEABANK</p>
+                    <p class="font-mono text-yellow-400 font-bold text-base">901525253273</p>
+                    <p class="text-gray-400">Account Holder: <span class="text-yellow-400">MUHAMMAD SAEPUL BAHRI</span></p>
+                    <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: Tempat duduk tersedia berdasarkan siapa yang datang terlebih dahulu.</p>
+                `;
+            }
+
             const orderId = 'AME-' + Math.floor(100000 + Math.random() * 900000);
 
             globalOrderData = {
@@ -432,19 +529,19 @@
                 email: email,
                 whatsapp: phone,
                 jumlah_tiket: qty,
-                nama_pemegang: holderNames,
-                total_harga: `IDR ${totalRupiah}`,
-                metode_pembayaran: "SEABANK"
+                nama_pemegang: holderNamesStr,
+                total_harga: totalPrice,
+                metode_pembayaran: paymentMethod
             };
 
             document.getElementById('summaryQtyText').innerText = `${qty} Ticket${qty > 1 ? 's' : ''}`;
-            document.getElementById('summaryTotalRupiah').innerText = `IDR ${totalRupiah}`;
+            document.getElementById('summaryTotalPrice').innerText = totalPrice;
+            document.getElementById('paymentInstructionsContainer').innerHTML = paymentDetailsHtml;
 
             closeBookingModal();
             document.getElementById('proofModal').classList.remove('hidden');
         }
 
-        // 2. WHEN UPLOADING PROOF AND CLICKING CONFIRM
         function finalizeOrderAndRedirect(event) {
             event.preventDefault();
 
@@ -466,7 +563,6 @@
                 img.src = uploadEvent.target.result;
                 
                 img.onload = async function() {
-                    // Compress the image to avoid timeout
                     const canvas = document.createElement('canvas');
                     let width = img.width;
                     let height = img.height;
@@ -494,7 +590,6 @@
                         data: base64Data
                     };
 
-                    // Send data using plain text fetch (bypass Google Script CORS)
                     try {
                         await fetch(GOOGLE_SCRIPT_URL, {
                             method: 'POST',
@@ -505,11 +600,9 @@
                         console.log("Background transmission error:", err);
                     }
 
-                    // Compose WhatsApp Admin message
                     const adminWA = "201552295993";
-                    const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* SEABANK\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
+                    const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* ${globalOrderData.metode_pembayaran}\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
 
-                    // Wait 1 second to ensure Spreadsheet processing, then open WhatsApp
                     setTimeout(() => {
                         closeProofModal();
                         window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
@@ -520,7 +613,6 @@
             reader.readAsDataURL(file);
         }
 
-        // Countdown Timer
         const targetDate = new Date("October 1, 2026 23:59:59").getTime(); 
         setInterval(() => {
             const distance = targetDate - new Date().getTime();

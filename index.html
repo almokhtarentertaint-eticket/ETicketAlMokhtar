@@ -144,9 +144,9 @@
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
                                 <span>Entry access to the Musical Celebration Concert</span>
                             </li>
-                            <li class="flex items-center space-x-2">
-                                <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span><strong>Free Seating:</strong> All Ticket are "free seating", and seats are Available on a first-come, first-served basis. </span>
+                            <li class="flex items-start space-x-2">
+                                <i class="fa-solid fa-check text-gold-500 text-xs mt-1"></i>
+                                <span><strong>Free Seating:</strong> All tickets are "free seating", available on a first-come, first-served basis.</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
@@ -204,10 +204,10 @@
                     </div>
                 </div>
 
-                <!-- Catatan Free Seating -->
+                <!-- Important Seating Notice -->
                 <div class="bg-gold-500/10 border border-gold-500/30 p-3 rounded-lg text-xs text-gold-300 flex items-start space-x-2">
                     <i class="fa-solid fa-circle-info mt-0.5"></i>
-                    <span><strong>Catatan Penting:</strong> Semua tiket menggunakan sistem <strong>Free Seating</strong>. Tempat duduk di lokasi acara tersedia berdasarkan siapa yang datang terlebih dahulu (first come, first served).</span>
+                    <span><strong>Important Note:</strong> All tickets operate on a <strong>Free Seating</strong> basis. Seats inside the venue are allocated on a first-come, first-served basis.</span>
                 </div>
             </div>
         </section>
@@ -263,37 +263,37 @@
     <!-- MODAL 1: BOOKING FORM -->
     <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+            <button onclick="closeBookingModal()" type="button" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl" aria-label="Close modal">
                 <i class="fa-solid fa-xmark"></i>
             </button>
 
             <div class="space-y-1 border-b border-gray-800 pb-3">
                 <h3 class="font-heading text-xl font-bold text-gold-400">Ticket Booking Form</h3>
-                <p class="text-xs text-gray-400">Please complete your details before proceeding to payment.</p>
+                <p class="text-xs text-gray-400">Please complete your contact details and ticket holder names below.</p>
             </div>
 
             <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1">Booker Name / Primary Contact *</label>
-                    <input type="text" id="custName" required placeholder="Example: Ahmad Fauzi" oninput="syncFirstTicketHolder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                    <label for="custName" class="block text-xs font-semibold text-gray-300 mb-1">Booker Name / Primary Contact *</label>
+                    <input type="text" id="custName" required placeholder="e.g. Ahmad Fauzi" oninput="syncFirstTicketHolder()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-1">Active Email *</label>
-                        <input type="email" id="custEmail" required placeholder="name@domain.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                        <label for="custEmail" class="block text-xs font-semibold text-gray-300 mb-1">Active Email Address *</label>
+                        <input type="email" id="custEmail" required placeholder="name@example.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                         <p class="text-[11px] text-yellow-400/90 mt-1 flex items-center gap-1">
-                            <i class="fa-solid fa-circle-info"></i> Any email provider (Gmail, iCloud, Yahoo, Outlook, etc.) is supported.
+                            <i class="fa-solid fa-circle-info"></i> Supports Gmail, iCloud, Yahoo, Outlook, and all custom domains.
                         </p>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-1">WhatsApp Number *</label>
+                        <label for="custPhone" class="block text-xs font-semibold text-gray-300 mb-1">WhatsApp Number *</label>
                         <input type="tel" id="custPhone" required placeholder="+20 / +62..." class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1">Number of Tickets *</label>
+                    <label for="custQty" class="block text-xs font-semibold text-gray-300 mb-1">Number of Tickets *</label>
                     <select id="custQty" onchange="renderHolderInputs()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                         <option value="1">1 Ticket (250 EGP / Rp 70.000)</option>
                         <option value="2">2 Tickets (500 EGP / Rp 140.000)</option>
@@ -304,7 +304,7 @@
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1">Select Payment Method *</label>
+                    <label for="custPaymentMethod" class="block text-xs font-semibold text-gray-300 mb-1">Payment Method *</label>
                     <select id="custPaymentMethod" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                         <option value="INSTAPAY">InstaPay (Egypt - EGP)</option>
                         <option value="BANK_TRANSFER_IDR">Bank Transfer Indonesia (IDR)</option>
@@ -313,316 +313,339 @@
 
                 <div id="holderNamesSection" class="space-y-3 pt-2 border-t border-gray-800">
                     <label class="block text-xs font-semibold text-gold-400">
-                        <i class="fa-solid fa-user-pen mr-1"></i> Ticket Holder Names *
+                        <i class="fa-solid fa-user-pen mr-1"></i> Ticket Holder Name(s) *
                     </label>
                     <div id="holderInputsContainer" class="space-y-2">
-                        <!-- Auto Rendered Inputs -->
+                        <!-- Auto-rendered inputs via JS -->
                     </div>
                     <p id="holderWarningMsg" class="text-[11px] text-red-400 hidden font-semibold"></p>
                 </div>
 
                 <button type="submit" id="btnSubmitForm" class="w-full bg-gold-500 hover:bg-gold-600 text-black font-bold py-3 rounded-xl transition duration-200 mt-2">
-                    Proceed to Payment Instructions
+                    Continue to Payment Instructions
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 2: PAYMENT INSTRUCTION & PROOF UPLOAD -->
-    <div id="proofModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
-        <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
-            <button onclick="closeProofModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
-                <i class="fa-solid fa-xmark text-xl"></i>
+   <!-- MODAL 2: PAYMENT INSTRUCTION & PROOF UPLOAD -->
+<div id="proofModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+    <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
+        <button onclick="closeProofModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+            <i class="fa-solid fa-xmark text-xl"></i>
+        </button>
+
+        <div class="space-y-1 border-b border-gray-800 pb-3">
+            <div class="inline-block bg-gold-500/20 text-gold-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1">
+                Final Step
+            </div>
+            <h3 class="font-heading text-xl font-bold text-gold-400">Upload Payment Proof &amp; Confirm</h3>
+            <p class="text-xs text-gray-400">Complete your transfer and upload the payment proof to be redirected to WhatsApp Admin.</p>
+        </div>
+
+        <!-- Billing Details -->
+        <div class="bg-cardbg p-4 rounded-xl border border-gold-500/30 space-y-3">
+            <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-2">
+                <span>Order Details:</span>
+                <span id="summaryQtyText" class="font-semibold text-white">1 Ticket</span>
+            </div>
+            <div class="flex justify-between items-center">
+                <span class="text-xs text-gray-300 font-semibold">Total Payment:</span>
+                <div class="text-right">
+                    <span id="summaryTotalPrice" class="font-heading text-lg font-bold text-gold-400 block">250 EGP / Rp 70.000</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dynamic Account Info based on selection -->
+        <div id="paymentInstructionsContainer" class="bg-cardbg p-4 rounded-xl border border-gray-800 text-xs space-y-2">
+            <!-- Will be filled dynamically by JS -->
+        </div>
+
+        <!-- UPLOAD FORM -->
+        <form onsubmit="finalizeOrderAndRedirect(event)" class="space-y-3 pt-2 border-t border-gray-800">
+            <div>
+                <label class="block text-xs font-semibold text-gold-400 mb-1">
+                    <i class="fa-solid fa-receipt mr-1"></i> Upload Payment Proof Photo *
+                </label>
+                <input type="file" id="paymentProof" accept="image/jpeg, image/png, image/webp" required onchange="validateImageFile(this)" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-black hover:file:bg-gold-600 cursor-pointer bg-gray-900 border border-gray-700 rounded-lg">
+                <p class="text-[11px] text-gray-400 mt-1">
+                    Format: JPG, PNG, WEBP. Max size: <strong>2 MB</strong>.
+                </p>
+                <p id="fileErrorMsg" class="text-[11px] text-red-400 hidden font-semibold mt-1"></p>
+            </div>
+
+            <button type="submit" id="btnFinalSubmit" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 text-center shadow-lg text-sm">
+                <i class="fa-brands fa-whatsapp text-lg"></i>
+                <span>Confirm via Admin WhatsApp</span>
             </button>
-
-            <div class="space-y-1 border-b border-gray-800 pb-3">
-                <div class="inline-block bg-gold-500/20 text-gold-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1">
-                    Final Step
-                </div>
-                <h3 class="font-heading text-xl font-bold text-gold-400">Upload Payment Proof &amp; Confirm</h3>
-                <p class="text-xs text-gray-400">Complete your transfer and upload the payment proof to be redirected to WhatsApp Admin.</p>
-            </div>
-
-            <!-- Billing Details -->
-            <div class="bg-cardbg p-4 rounded-xl border border-gold-500/30 space-y-3">
-                <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-2">
-                    <span>Order Details:</span>
-                    <span id="summaryQtyText" class="font-semibold text-white">1 Ticket</span>
-                </div>
-                <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-300 font-semibold">Total Payment:</span>
-                    <div class="text-right">
-                        <span id="summaryTotalPrice" class="font-heading text-lg font-bold text-gold-400 block">250 EGP / Rp 70.000</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Dynamic Account Info based on selection -->
-            <div id="paymentInstructionsContainer" class="bg-cardbg p-4 rounded-xl border border-gray-800 text-xs space-y-2">
-                <!-- Will be filled dynamically by JS -->
-            </div>
-
-            <!-- UPLOAD FORM -->
-            <form onsubmit="finalizeOrderAndRedirect(event)" class="space-y-3 pt-2 border-t border-gray-800">
-                <div>
-                    <label class="block text-xs font-semibold text-gold-400 mb-1">
-                        <i class="fa-solid fa-receipt mr-1"></i> Upload Payment Proof Photo *
-                    </label>
-                    <input type="file" id="paymentProof" accept="image/jpeg, image/png, image/webp" required onchange="validateImageFile(this)" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-black hover:file:bg-gold-600 cursor-pointer bg-gray-900 border border-gray-700 rounded-lg">
-                    <p class="text-[11px] text-gray-400 mt-1">
-                        Format: JPG, PNG, WEBP. Max size: <strong>2 MB</strong>.
-                    </p>
-                    <p id="fileErrorMsg" class="text-[11px] text-red-400 hidden font-semibold mt-1"></p>
-                </div>
-
-                <button type="submit" id="btnFinalSubmit" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 text-center shadow-lg text-sm">
-                    <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Confirm via Admin WhatsApp</span>
-                </button>
-            </form>
-        </div>
+        </form>
     </div>
+</div>
 
-    <!-- JAVASCRIPT LOGIC -->
-    <script>
-        const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrpJkydxov6jjIKlE5JnrekEkulIape2arPmeFCkJEYTHF-ydOe78c5bXIeQ5jlgyW/exec";
-        const TICKET_PRICE_EGP = 250;
-        const TICKET_PRICE_IDR = 70000;
-        let globalOrderData = {};
+<!-- JAVASCRIPT LOGIC -->
+<script>
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrpJkydxov6jjIKlE5JnrekEkulIape2arPmeFCkJEYTHF-ydOe78c5bXIeQ5jlgyW/exec";
+    const TICKET_PRICE_EGP = 250;
+    const TICKET_PRICE_IDR = 70000;
+    let globalOrderData = {};
 
-        function openBookingModal() {
-            document.getElementById('bookingModal')?.classList.remove('hidden');
-            renderHolderInputs();
-        }
-
-        function closeBookingModal() {
-            document.getElementById('bookingModal')?.classList.add('hidden');
-        }
-
-        function closeProofModal() {
-            document.getElementById('proofModal')?.classList.add('hidden');
-        }
-
-        function validateImageFile(input) {
-            const fileErrorMsg = document.getElementById('fileErrorMsg');
-            const file = input.files[0];
-            
-            if (file) {
-                const fileSizeMB = file.size / (1024 * 1024);
-                const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
-
-                if (!validTypes.includes(file.type)) {
-                    fileErrorMsg.innerText = "❌ Invalid file format! Please upload an image (JPG, PNG, WEBP).";
-                    fileErrorMsg.classList.remove('hidden');
-                    input.value = "";
-                    return;
-                }
-
-                if (fileSizeMB > 2) {
-                    fileErrorMsg.innerText = `❌ File size is too large (${fileSizeMB.toFixed(1)} MB). Maximum size is 2 MB!`;
-                    fileErrorMsg.classList.remove('hidden');
-                    input.value = "";
-                    return;
-                }
-
-                fileErrorMsg.classList.add('hidden');
-            }
-        }
-
-        function renderHolderInputs() {
-            const qty = parseInt(document.getElementById('custQty').value) || 1;
-            const container = document.getElementById('holderInputsContainer');
-            const bookerName = document.getElementById('custName').value.trim();
-            container.innerHTML = '';
-
-            for (let i = 1; i <= qty; i++) {
-                if (i === 1) {
-                    container.innerHTML += `
-                        <div>
-                            <label class="block text-[11px] text-gray-400 mb-0.5">Ticket 1 (Must match Booker Name):</label>
-                            <input type="text" id="holderInput_1" value="${bookerName}" readonly class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-300 cursor-not-allowed">
-                        </div>
-                    `;
-                } else {
-                    container.innerHTML += `
-                        <div>
-                            <label class="block text-[11px] text-gray-400 mb-0.5">Ticket ${i} Holder Name (Cannot be the same as Booker):</label>
-                            <input type="text" required placeholder="Enter guest name for ticket ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
-                        </div>
-                    `;
-                }
-            }
-        }
-
-        function syncFirstTicketHolder() {
-            const bookerName = document.getElementById('custName').value;
-            const input1 = document.getElementById('holderInput_1');
-            if (input1) {
-                input1.value = bookerName;
-            }
-        }
-        
+    function openBookingModal() {
+        document.getElementById('bookingModal')?.classList.remove('hidden');
         renderHolderInputs();
+    }
 
-        function submitOrder(event) {
-            event.preventDefault();
+    function closeBookingModal() {
+        document.getElementById('bookingModal')?.classList.add('hidden');
+    }
 
-            const name = document.getElementById('custName').value.trim();
-            const email = document.getElementById('custEmail').value;
-            const phone = document.getElementById('custPhone').value;
-            const qty = parseInt(document.getElementById('custQty').value) || 1;
-            const paymentMethod = document.getElementById('custPaymentMethod').value;
-            const warningMsg = document.getElementById('holderWarningMsg');
+    function closeProofModal() {
+        document.getElementById('proofModal')?.classList.add('hidden');
+    }
 
-            let holderNamesArr = [name];
-            if (qty > 1) {
-                const extraInputs = document.querySelectorAll('.holder-name-input');
-                for (let input of extraInputs) {
-                    const val = input.value.trim();
-                    if (!val) {
-                        warningMsg.innerText = "❌ Please fill in all ticket holder names!";
-                        warningMsg.classList.remove('hidden');
-                        return;
-                    }
-                    if (val.toLowerCase() === name.toLowerCase()) {
-                        warningMsg.innerText = `❌ Ticket holder names for tickets 2 and above cannot be the same as the Booker Name ("${name}")!`;
-                        warningMsg.classList.remove('hidden');
-                        input.focus();
-                        return;
-                    }
-                    holderNamesArr.push(val);
-                }
-            }
-            warningMsg.classList.add('hidden');
+    function validateImageFile(input) {
+        const fileErrorMsg = document.getElementById('fileErrorMsg');
+        const file = input.files[0];
+        
+        if (file) {
+            const fileSizeMB = file.size / (1024 * 1024);
+            const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
 
-            const holderNamesStr = holderNamesArr.join(', ');
-
-            let totalPrice = "";
-            let paymentDetailsHtml = "";
-
-            if (paymentMethod === "INSTAPAY") {
-                totalPrice = (qty * TICKET_PRICE_EGP) + " EGP";
-                paymentDetailsHtml = `
-                    <p class="text-gray-400 font-medium">Destination Account (InstaPay):</p>
-                    <p class="text-sm font-bold text-white">InstaPay (Egypt)</p>
-                    <p class="font-mono text-yellow-400 font-bold text-base">01552295993</p>
-                    <p class="text-gray-400">Account Holder: <span class="text-yellow-400">Muhammad Saepul Bahri</span></p>
-                    <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: Tempat duduk tersedia berdasarkan siapa yang datang terlebih dahulu.</p>
-                `;
-            } else {
-                let totalIdrFormatted = (qty * TICKET_PRICE_IDR).toLocaleString('id-ID');
-                totalPrice = "Rp " + totalIdrFormatted;
-                paymentDetailsHtml = `
-                    <p class="text-gray-400 font-medium">Destination Account (Indonesia Bank):</p>
-                    <p class="text-sm font-bold text-white">SEABANK</p>
-                    <p class="font-mono text-yellow-400 font-bold text-base">901525253273</p>
-                    <p class="text-gray-400">Account Holder: <span class="text-yellow-400">MUHAMMAD SAEPUL BAHRI</span></p>
-                    <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: Tempat duduk tersedia berdasarkan siapa yang datang terlebih dahulu.</p>
-                `;
-            }
-
-            const orderId = 'AME-' + Math.floor(100000 + Math.random() * 900000);
-
-            globalOrderData = {
-                order_id: orderId,
-                nama_pemesan: name,
-                email: email,
-                whatsapp: phone,
-                jumlah_tiket: qty,
-                nama_pemegang: holderNamesStr,
-                total_harga: totalPrice,
-                metode_pembayaran: paymentMethod
-            };
-
-            document.getElementById('summaryQtyText').innerText = `${qty} Ticket${qty > 1 ? 's' : ''}`;
-            document.getElementById('summaryTotalPrice').innerText = totalPrice;
-            document.getElementById('paymentInstructionsContainer').innerHTML = paymentDetailsHtml;
-
-            closeBookingModal();
-            document.getElementById('proofModal').classList.remove('hidden');
-        }
-
-        function finalizeOrderAndRedirect(event) {
-            event.preventDefault();
-
-            const fileInput = document.getElementById('paymentProof');
-            if (!fileInput.files[0]) {
-                alert("Please upload the payment proof photo first!");
+            if (!validTypes.includes(file.type)) {
+                fileErrorMsg.innerText = "❌ Invalid file format! Please upload an image (JPG, PNG, WEBP).";
+                fileErrorMsg.classList.remove('hidden');
+                input.value = "";
                 return;
             }
 
-            const btnFinal = document.getElementById('btnFinalSubmit');
-            btnFinal.disabled = true;
-            btnFinal.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Saving Data &amp; Opening WhatsApp...`;
+            if (fileSizeMB > 2) {
+                fileErrorMsg.innerText = `❌ File size is too large (${fileSizeMB.toFixed(1)} MB). Maximum size is 2 MB!`;
+                fileErrorMsg.classList.remove('hidden');
+                input.value = "";
+                return;
+            }
 
-            const file = fileInput.files[0];
-            const reader = new FileReader();
+            fileErrorMsg.classList.add('hidden');
+        }
+    }
 
-            reader.onload = function (uploadEvent) {
-                const img = new Image();
-                img.src = uploadEvent.target.result;
-                
-                img.onload = async function() {
-                    const canvas = document.createElement('canvas');
-                    let width = img.width;
-                    let height = img.height;
-                    const maxDim = 800; 
+    function renderHolderInputs() {
+        const custQtyEl = document.getElementById('custQty');
+        const custNameEl = document.getElementById('custName');
+        const container = document.getElementById('holderInputsContainer');
+        
+        if (!container) return;
 
-                    if (width > height && width > maxDim) {
-                        height *= maxDim / width;
-                        width = maxDim;
-                    } else if (height > maxDim) {
-                        width *= maxDim / height;
-                        height = maxDim;
+        const qty = parseInt(custQtyEl ? custQtyEl.value : 1) || 1;
+        const bookerName = custNameEl ? custNameEl.value.trim() : '';
+        container.innerHTML = '';
+
+        for (let i = 1; i <= qty; i++) {
+            if (i === 1) {
+                container.innerHTML += `
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-0.5">Ticket 1 (Must match Booker Name):</label>
+                        <input type="text" id="holderInput_1" value="${bookerName}" readonly class="w-full bg-gray-900/60 border border-gray-700 rounded-lg px-3 py-2 text-sm text-gray-300 cursor-not-allowed">
+                    </div>
+                `;
+            } else {
+                container.innerHTML += `
+                    <div>
+                        <label class="block text-[11px] text-gray-400 mb-0.5">Ticket ${i} Holder Name (Cannot be the same as Booker):</label>
+                        <input type="text" required placeholder="Enter guest name for ticket ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                    </div>
+                `;
+            }
+        }
+    }
+
+    function syncFirstTicketHolder() {
+        const custNameEl = document.getElementById('custName');
+        const input1 = document.getElementById('holderInput_1');
+        if (custNameEl && input1) {
+            input1.value = custNameEl.value;
+        }
+    }
+
+    function submitOrder(event) {
+        event.preventDefault();
+
+        const name = document.getElementById('custName').value.trim();
+        const email = document.getElementById('custEmail').value;
+        const phone = document.getElementById('custPhone').value;
+        const qty = parseInt(document.getElementById('custQty').value) || 1;
+        const paymentMethod = document.getElementById('custPaymentMethod').value;
+        const warningMsg = document.getElementById('holderWarningMsg');
+
+        let holderNamesArr = [name];
+        if (qty > 1) {
+            const extraInputs = document.querySelectorAll('.holder-name-input');
+            for (let input of extraInputs) {
+                const val = input.value.trim();
+                if (!val) {
+                    if (warningMsg) {
+                        warningMsg.innerText = "❌ Please fill in all ticket holder names!";
+                        warningMsg.classList.remove('hidden');
                     }
-
-                    canvas.width = width;
-                    canvas.height = height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0, width, height);
-
-                    const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6);
-                    const base64Data = compressedDataUrl.split(',')[1];
-
-                    globalOrderData.file = {
-                        name: file.name,
-                        mimeType: "image/jpeg",
-                        data: base64Data
-                    };
-
-                    try {
-                        await fetch(GOOGLE_SCRIPT_URL, {
-                            method: 'POST',
-                            headers: { "Content-Type": "text/plain;charset=utf-8" },
-                            body: JSON.stringify(globalOrderData)
-                        });
-                    } catch (err) {
-                        console.log("Background transmission error:", err);
+                    return;
+                }
+                if (val.toLowerCase() === name.toLowerCase()) {
+                    if (warningMsg) {
+                        warningMsg.innerText = `❌ Ticket holder names for tickets 2 and above cannot be the same as the Booker Name ("${name}")!`;
+                        warningMsg.classList.remove('hidden');
                     }
+                    input.focus();
+                    return;
+                }
+                holderNamesArr.push(val);
+            }
+        }
+        if (warningMsg) warningMsg.classList.add('hidden');
 
-                    const adminWA = "201552295993";
-                    const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* ${globalOrderData.metode_pembayaran}\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
+        const holderNamesStr = holderNamesArr.join(', ');
 
-                    setTimeout(() => {
-                        closeProofModal();
-                        window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
-                    }, 1000);
-                };
-            };
+        let totalPrice = "";
+        let paymentDetailsHtml = "";
 
-            reader.readAsDataURL(file);
+        if (paymentMethod === "INSTAPAY") {
+            totalPrice = (qty * TICKET_PRICE_EGP) + " EGP";
+            paymentDetailsHtml = `
+                <p class="text-gray-400 font-medium">Destination Account (InstaPay):</p>
+                <p class="text-sm font-bold text-white">InstaPay (Egypt)</p>
+                <p class="font-mono text-yellow-400 font-bold text-base">01552295993</p>
+                <p class="text-gray-400">Account Holder: <span class="text-yellow-400">Muhammad Saepul Bahri</span></p>
+                <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: All tickets are "free seating", available on a first-come, first-served basis.</p>
+            `;
+        } else {
+            let totalIdrFormatted = (qty * TICKET_PRICE_IDR).toLocaleString('id-ID');
+            totalPrice = "Rp " + totalIdrFormatted;
+            paymentDetailsHtml = `
+                <p class="text-gray-400 font-medium">Destination Account (Indonesia Bank):</p>
+                <p class="text-sm font-bold text-white">SEABANK</p>
+                <p class="font-mono text-yellow-400 font-bold text-base">901525253273</p>
+                <p class="text-gray-400">Account Holder: <span class="text-yellow-400">MUHAMMAD SAEPUL BAHRI</span></p>
+                <p class="text-[11px] text-amber-300/90 mt-1 italic">📌 Free Seating: All tickets are "free seating", available on a first-come, first-served basis.</p>
+            `;
         }
 
-        const targetDate = new Date("October 1, 2026 23:59:59").getTime(); 
-        setInterval(() => {
-            const distance = targetDate - new Date().getTime();
-            if (distance <= 0) return;
+        const orderId = 'AME-' + Math.floor(100000 + Math.random() * 900000);
 
-            document.getElementById('cd-days').innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-            document.getElementById('cd-hours').innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-            document.getElementById('cd-minutes').innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-            document.getElementById('cd-seconds').innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-        }, 1000);
-    </script>
-</body>
-</html>
+        globalOrderData = {
+            order_id: orderId,
+            nama_pemesan: name,
+            email: email,
+            whatsapp: phone,
+            jumlah_tiket: qty,
+            nama_pemegang: holderNamesStr,
+            total_harga: totalPrice,
+            metode_pembayaran: paymentMethod
+        };
+
+        document.getElementById('summaryQtyText').innerText = `${qty} Ticket${qty > 1 ? 's' : ''}`;
+        document.getElementById('summaryTotalPrice').innerText = totalPrice;
+        document.getElementById('paymentInstructionsContainer').innerHTML = paymentDetailsHtml;
+
+        closeBookingModal();
+        document.getElementById('proofModal').classList.remove('hidden');
+    }
+
+    function finalizeOrderAndRedirect(event) {
+        event.preventDefault();
+
+        const fileInput = document.getElementById('paymentProof');
+        if (!fileInput.files[0]) {
+            alert("Please upload the payment proof photo first!");
+            return;
+        }
+
+        const btnFinal = document.getElementById('btnFinalSubmit');
+        btnFinal.disabled = true;
+        btnFinal.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Saving Data &amp; Opening WhatsApp...`;
+
+        const file = fileInput.files[0];
+        const reader = new FileReader();
+
+        reader.onload = function (uploadEvent) {
+            const img = new Image();
+            img.src = uploadEvent.target.result;
+            
+            img.onload = async function() {
+                const canvas = document.createElement('canvas');
+                let width = img.width;
+                let height = img.height;
+                const maxDim = 800; 
+
+                if (width > height && width > maxDim) {
+                    height *= maxDim / width;
+                    width = maxDim;
+                } else if (height > maxDim) {
+                    width *= maxDim / height;
+                    height = maxDim;
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const compressedDataUrl = canvas.toDataURL('image/jpeg', 0.6);
+                const base64Data = compressedDataUrl.split(',')[1];
+
+                globalOrderData.file = {
+                    name: file.name,
+                    mimeType: "image/jpeg",
+                    data: base64Data
+                };
+
+                try {
+                    await fetch(GOOGLE_SCRIPT_URL, {
+                        method: 'POST',
+                        mode: 'no-cors', // Menghindari CORS error pada Google Apps Script
+                        headers: { "Content-Type": "text/plain;charset=utf-8" },
+                        body: JSON.stringify(globalOrderData)
+                    });
+                } catch (err) {
+                    console.log("Background transmission error:", err);
+                }
+
+                const adminWA = "201552295993";
+                const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* ${globalOrderData.metode_pembayaran}\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
+
+                setTimeout(() => {
+                    closeProofModal();
+                    window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
+                }, 1000);
+            };
+
+            img.onerror = function() {
+                alert("Gagal memproses gambar. Silakan coba unggah foto lain.");
+                btnFinal.disabled = false;
+                btnFinal.innerHTML = `<i class="fa-brands fa-whatsapp text-lg"></i> <span>Confirm via Admin WhatsApp</span>`;
+            };
+        };
+
+        reader.readAsDataURL(file);
+    }
+
+    // Safely initialize Countdown Timer
+    const targetDate = new Date("October 1, 2026 23:59:59").getTime(); 
+    setInterval(() => {
+        const distance = targetDate - new Date().getTime();
+        if (distance <= 0) return;
+
+        const cdDays = document.getElementById('cd-days');
+        const cdHours = document.getElementById('cd-hours');
+        const cdMinutes = document.getElementById('cd-minutes');
+        const cdSeconds = document.getElementById('cd-seconds');
+
+        if (cdDays) cdDays.innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+        if (cdHours) cdHours.innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+        if (cdMinutes) cdMinutes.innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+        if (cdSeconds) cdSeconds.innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+    }, 1000);
+
+    // Initial call when DOM loaded
+    document.addEventListener("DOMContentLoaded", () => {
+        renderHolderInputs();
+    });
+</script>

@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Al Mokhtar Ensemble An Exclusive Night Of Sholawat - Tiket Konser</title>
+    <title>Al Mokhtar Ensemble An Exclusive Night Of Sholawat - Concert Tickets</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700;900&family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -47,26 +47,26 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between selection:bg-gold-500 selection:text-black">
 
-    <!-- PERINGATAN / BANNER PENTING -->
+    <!-- IMPORTANT BANNER -->
     <div class="bg-red-600/90 border-b border-red-500 text-white px-4 py-2 text-center text-xs sm:text-sm font-semibold flex items-center justify-center gap-2 sticky top-0 z-50 shadow-lg">
         <i class="fa-solid fa-triangle-exclamation animate-bounce"></i>
-        <span>PERINGATAN: Batas akhir pembelian tiket adalah <strong>1 Oktober 2026</strong>! Jangan sampai terlewat.</span>
+        <span>WARNING: The ticket purchasing deadline is <strong>October 1, 2026</strong>! Don't miss out.</span>
     </div>
 
     <!-- NAVBAR -->
     <nav class="sticky top-[37px] sm:top-[41px] z-40 glass-panel border-b border-gold-500/20 px-4 py-3">
         <div class="max-w-6xl mx-auto flex justify-between items-center">
             <div class="flex items-center space-x-3">
-                <img src="LogoAlmokhtar.png" alt="LogoAlmokhtar" class="w-16 h-auto object-contain inline-block mr-2">
+                <img src="LogoAlmokhtar.png" alt="LogoAlmokhtar" class="w-16 h-auto object-contain inline-block mr-2" onerror="this.style.display='none'">
                 <span class="font-heading font-bold text-lg tracking-wider text-gold-400">AL MOKHTAR ENSEMBLE</span>
             </div>
             <div class="flex items-center space-x-2">
                 <a href="https://wa.me/6282116953115" target="_blank" class="flex items-center space-x-1.5 bg-green-600/20 hover:bg-green-600/30 text-green-400 border border-green-500/30 font-semibold px-3 py-1.5 rounded-lg text-xs transition-all">
                     <i class="fa-brands fa-whatsapp text-sm"></i>
-                    <span>Admin WhatsApp</span>
+                    <span>WhatsApp Admin</span>
                 </a>
                 <button onclick="openBookingModal()" class="bg-gold-500 hover:bg-gold-600 text-black font-semibold px-4 py-2 rounded-lg text-sm transition-all duration-200 transform hover:scale-105">
-                    Beli Tiket
+                    Buy Tickets
                 </button>
             </div>
         </div>
@@ -82,39 +82,39 @@
                 Al Mokhtar Ensemble<br/>An Exclusive Night Of Sholawat
             </h1>
             <p class="text-gray-400 text-base sm:text-lg max-w-2xl mx-auto font-light">
-                 Satu Malam, Satu Majelis. Satu Cinta Kepada Rasulullah ﷺ Tempat Terbatas - Segera Amankan Tiket Anda 
+                 One Night, One Gathering. One Love for Rasulullah ﷺ. Limited Seats - Secure Your Tickets Now
             </p>
 
             <div class="flex flex-wrap justify-center gap-4 text-sm font-medium pt-2">
                 <div class="flex items-center space-x-2 glass-panel px-4 py-2 rounded-lg text-gold-400">
                     <i class="fa-regular fa-calendar-check"></i>
-                    <span>Acara: 2 Oktober 2026</span>
+                    <span>Event: October 2, 2026</span>
                 </div>
                 <div class="flex items-center space-x-2 glass-panel px-4 py-2 rounded-lg text-red-400 border-red-500/30">
                     <i class="fa-regular fa-clock"></i>
-                    <span>Batas Pembelian: 1 Oktober 2026</span>
+                    <span>Deadline: October 1, 2026</span>
                 </div>
             </div>
 
             <!-- COUNTDOWN -->
             <div class="pt-6">
-                <p class="text-xs uppercase tracking-widest text-gray-400 mb-3">Sisa Waktu Pembelian</p>
+                <p class="text-xs uppercase tracking-widest text-gray-400 mb-3">Time Remaining</p>
                 <div class="grid grid-cols-4 gap-2 sm:gap-4 max-w-md mx-auto">
                     <div class="glass-panel p-3 rounded-xl">
                         <span id="cd-days" class="block font-heading text-2xl sm:text-3xl font-bold text-gold-400">00</span>
-                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Hari</span>
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Days</span>
                     </div>
                     <div class="glass-panel p-3 rounded-xl">
                         <span id="cd-hours" class="block font-heading text-2xl sm:text-3xl font-bold text-gold-400">00</span>
-                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Jam</span>
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Hours</span>
                     </div>
                     <div class="glass-panel p-3 rounded-xl">
                         <span id="cd-minutes" class="block font-heading text-2xl sm:text-3xl font-bold text-gold-400">00</span>
-                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Menit</span>
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Minutes</span>
                     </div>
                     <div class="glass-panel p-3 rounded-xl">
                         <span id="cd-seconds" class="block font-heading text-2xl sm:text-3xl font-bold text-gold-400">00</span>
-                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Detik</span>
+                        <span class="text-[10px] sm:text-xs text-gray-400 uppercase">Seconds</span>
                     </div>
                 </div>
             </div>
@@ -125,8 +125,8 @@
     <main class="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-12">
         <section id="tiket" class="space-y-6 scroll-mt-20">
             <div class="text-center space-y-2">
-                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Tiket Konser</h2>
-                <p class="text-gray-400 text-sm">Pesan tiket konser Anda di sini (Maksimal 5 tiket per pesanan)</p>
+                <h2 class="font-heading text-2xl sm:text-3xl font-bold text-white">Concert Tickets</h2>
+                <p class="text-gray-400 text-sm">Book your concert tickets here (Max 5 tickets per order)</p>
             </div>
 
             <div class="max-w-xl mx-auto">
@@ -134,44 +134,44 @@
                     <div class="space-y-4">
                         <div class="flex justify-between items-start">
                             <div>
-                                <h3 class="font-heading text-xl font-bold text-gold-400">Tiket Konser Al Mokhtar</h3>
-                                <p class="text-xs text-gray-400">Akses Masuk Utama & Kode Tiket Unik</p>
+                                <h3 class="font-heading text-xl font-bold text-gold-400">Al Mokhtar Concert Ticket</h3>
+                                <p class="text-xs text-gray-400">Main Entrance Access & Unique Ticket Code</p>
                             </div>
-                            <span class="bg-gold-500/20 text-gold-400 text-xs px-2.5 py-1 rounded-full border border-gold-500/30">Tersedia</span>
+                            <span class="bg-gold-500/20 text-gold-400 text-xs px-2.5 py-1 rounded-full border border-gold-500/30">Available</span>
                         </div>
                         <ul class="text-sm text-gray-300 space-y-2 py-2">
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span>Akses masuk Konser Musik Musical Celebration</span>
+                                <span>Entry access to the Musical Celebration Concert</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span>Tempat Duduk Acara</span>
+                                <span>Event Seating</span>
                             </li>
                             <li class="flex items-center space-x-2">
                                 <i class="fa-solid fa-check text-gold-500 text-xs"></i>
-                                <span>E-Tiket dikirim langsung via Email & WhatsApp</span>
+                                <span>E-Ticket sent directly via Email & WhatsApp</span>
                             </li>
                         </ul>
                     </div>
                     <div class="pt-6 border-t border-gray-800 flex items-center justify-between mt-4">
                         <div>
-                            <span class="text-xs text-gray-500 block">Harga Tiket:</span>
-                            <span class="font-heading text-lg font-bold text-gold-400">Rp 70.000 <span class="text-xs text-gray-400 font-normal"></span></span>
+                            <span class="text-xs text-gray-500 block">Ticket Price:</span>
+                            <span class="font-heading text-lg font-bold text-gold-400">IDR 70,000 <span class="text-xs text-gray-400 font-normal"></span></span>
                         </div>
                         <button onclick="openBookingModal()" class="bg-gold-500 hover:bg-gold-600 text-black px-6 py-2.5 rounded-xl font-bold text-sm transition duration-200">
-                            Pesan Tiket
+                            Book Ticket
                         </button>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Informasi Pembayaran -->
+        <!-- Payment Information -->
         <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 max-w-xl mx-auto">
             <h2 class="font-heading text-xl sm:text-2xl font-bold text-white border-b border-gray-800 pb-3 flex items-center space-x-2">
                 <i class="fa-solid fa-credit-card text-gold-500"></i>
-                <span>Metode Pembayaran</span>
+                <span>Payment Method</span>
             </h2>
             <div class="bg-cardbg p-5 rounded-xl border border-gray-800 space-y-3">
                 <div class="flex items-center justify-between">
@@ -182,63 +182,61 @@
                 </div>
                 <div class="text-xs text-gray-400 space-y-1">
                     <p><strong class="text-gray-300">Bank:</strong> SEABANK </p>
-                    <p><strong class="text-gray-300">No. Rekening:</strong> <span class="text-gold-400 font-mono text-sm">901525253273</span></p>
-                    <p><strong class="text-gray-300">Atas Nama:</strong> MUHAMMAD SAEPUL BAHRI</p>
+                    <p><strong class="text-gray-300">Account Number:</strong> <span class="text-gold-400 font-mono text-sm">901525253273</span></p>
+                    <p><strong class="text-gray-300">Account Holder:</strong> MUHAMMAD SAEPUL BAHRI</p>
                 </div>
             </div>
         </section>
 
-        <!-- JADWAL & LOKASI ACARA -->
+        <!-- EVENT SCHEDULE & LOCATION -->
         <section class="glass-panel rounded-2xl p-6 sm:p-8 space-y-6 max-w-xl mx-auto">
             <h2 class="font-heading text-xl sm:text-2xl font-bold text-white border-b border-gray-800 pb-3 flex items-center space-x-2">
                 <i class="fa-solid fa-calendar-days text-gold-500"></i>
-                <span>Jadwal &amp; Lokasi Acara</span>
+                <span>Event Schedule &amp; Location</span>
             </h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
                 <div class="bg-cardbg p-4 rounded-xl border border-gray-800 space-y-1">
-                    <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider block">Tanggal &amp; Waktu</span>
-                    <p class="font-bold text-white">2 Oktober 2026</p>
-                    <p class="text-xs text-gray-400">Pukul 19.00 CLT (Cairo Local Time)</p>
+                    <span class="text-xs text-gold-400 font-semibold uppercase tracking-wider block">Date &amp; Time</span>
+                    <p class="font-bold text-white">October 2, 2026</p>
+                    <p class="text-xs text-gray-400">07:00 PM CLT (Cairo Local Time)</p>
                 </div>
-               <div class="w-full bg-[#16161e] border border-amber-500/30 rounded-xl p-4 shadow-2xl">
-    <div class="text-center mb-3">
-        <h2 class="text-amber-400 font-cinzel text-sm tracking-wider">LOKASI ACARA</h2>
-        <p class="text-slate-400 text-[11px] uppercase mt-0.5">Teatro Afaq, Cairo, Egypt</p>
-    </div>
+                <div class="w-full bg-[#16161e] border border-amber-500/30 rounded-xl p-4 shadow-2xl">
+                    <div class="text-center mb-3">
+                        <h2 class="text-amber-400 font-heading text-sm tracking-wider">EVENT LOCATION</h2>
+                        <p class="text-slate-400 text-[11px] uppercase mt-0.5">Teatro Afaq, Cairo, Egypt</p>
+                    </div>
 
-    <!-- Kotak Peta yang Dibungkus Link agar Bisa Diklik Sepenuhnya -->
-    <a href="https://maps.app.goo.gl/TXFzpgtNPg86d4826?g_st=ic" target="_blank" rel="noopener noreferrer" class="block w-full h-48 rounded-lg overflow-hidden border border-slate-700 bg-black relative group cursor-pointer">
-        <!-- 
-          pointer-events-none dipasang agar klik pada iframe tetap menembus ke tag <a> pembungkusnya, 
-          sehingga seluruh area kotak bisa ditekan.
-        -->
-        <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.995874749221!2d31.2487!3d30.0512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAzJzA0LjMiTiAzMcKwMTUnMTUuNCJF!5e0!3m2!1sid!2seg!4v1710000000000!5m2!1sid!2seg" 
-            width="100%" 
-            height="100%" 
-            style="border:0;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade"
-            class="pointer-events-none w-full h-full">
-        </iframe>
-        
-        <!-- Efek overlay petunjuk visual saat disentuh/diarahkan kursor -->
-        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
-    </a>
+                    <!-- Map Box -->
+                    <a href="https://maps.app.goo.gl/TXFzpgtNPg86d4826?g_st=ic" target="_blank" rel="noopener noreferrer" class="block w-full h-48 rounded-lg overflow-hidden border border-slate-700 bg-black relative group cursor-pointer">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3453.995874749221!2d31.2487!3d30.0512!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMzDCsDAzJzA0LjMiTiAzMcKwMTUnMTUuNCJF!5e0!3m2!1sid!2seg!4v1710000000000!5m2!1sid!2seg" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade"
+                            class="pointer-events-none w-full h-full">
+                        </iframe>
+                        <div class="absolute inset-0 bg-black/10 group-hover:bg-transparent transition"></div>
+                    </a>
 
-    <div class="mt-3 text-center">
-        <a href="https://maps.app.goo.gl/TXFzpgtNPg86d4826?g_st=ic" target="_blank" rel="noopener noreferrer" class="text-xs text-amber-400 hover:text-amber-300 underline font-semibold">
-            🔗 Buka Petunjuk Arah di Google Maps
-        </a>
-    </div>
-</div>
+                    <div class="mt-3 text-center">
+                        <a href="https://maps.app.goo.gl/TXFzpgtNPg86d4826?g_st=ic" target="_blank" rel="noopener noreferrer" class="text-xs text-amber-400 hover:text-amber-300 underline font-semibold">
+                            🔗 Open Directions in Google Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
     <!-- FOOTER -->
     <footer class="border-t border-gray-800 py-6 text-center text-xs text-gray-500">
         <p>&copy; 2026 Al Mokhtar Ensemble. All Rights Reserved.</p>
     </footer>
 
-    <!-- MODAL 1: FORMULIR PEMESANAN -->
+    <!-- MODAL 1: BOOKING FORM -->
     <div id="bookingModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeBookingModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
@@ -246,58 +244,58 @@
             </button>
 
             <div class="space-y-1 border-b border-gray-800 pb-3">
-                <h3 class="font-heading text-xl font-bold text-gold-400">Formulir Pemesanan Tiket</h3>
-                <p class="text-xs text-gray-400">Lengkapi data diri terlebih dahulu sebelum melakukan pembayaran</p>
+                <h3 class="font-heading text-xl font-bold text-gold-400">Ticket Booking Form</h3>
+                <p class="text-xs text-gray-400">Please complete your details before proceeding to payment.</p>
             </div>
 
             <form id="orderForm" onsubmit="submitOrder(event)" class="space-y-4">
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1">Nama Pemesan / Kontak Utama *</label>
-                    <input type="text" id="custName" required placeholder="Contoh: Ahmad Fauzi" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Booker Name / Primary Contact *</label>
+                    <input type="text" id="custName" required placeholder="Example: Ahmad Fauzi" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-1">Email Aktif *</label>
-                        <input type="email" id="custEmail" required placeholder="nama@email.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">Active Email *</label>
+                        <input type="email" id="custEmail" required placeholder="name@email.com" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                         <p class="text-[11px] text-yellow-400/90 mt-1 flex items-center gap-1">
-                            <i class="fa-solid fa-circle-info"></i> Wajib isi email aktif untuk E-Tiket.
+                            <i class="fa-solid fa-circle-info"></i> Active email is required for E-Ticket.
                         </p>
                     </div>
                     <div>
-                        <label class="block text-xs font-semibold text-gray-300 mb-1">No. WhatsApp *</label>
+                        <label class="block text-xs font-semibold text-gray-300 mb-1">WhatsApp Number *</label>
                         <input type="tel" id="custPhone" required placeholder="+20 / +62..." class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
                     </div>
                 </div>
 
                 <div>
-                    <label class="block text-xs font-semibold text-gray-300 mb-1">Jumlah Tiket *</label>
+                    <label class="block text-xs font-semibold text-gray-300 mb-1">Number of Tickets *</label>
                     <select id="custQty" onchange="renderHolderInputs()" class="w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">
-                        <option value="1">1 Tiket (Rp 70.000)</option>
-                        <option value="2">2 Tiket (Rp 140.000)</option>
-                        <option value="3">3 Tiket (Rp 210.000)</option>
-                        <option value="4">4 Tiket (Rp 280.000)</option>
-                        <option value="5">5 Tiket (Rp 350.000)</option>
+                        <option value="1">1 Ticket (IDR 70,000)</option>
+                        <option value="2">2 Tickets (IDR 140,000)</option>
+                        <option value="3">3 Tickets (IDR 210,000)</option>
+                        <option value="4">4 Tickets (IDR 280,000)</option>
+                        <option value="5">5 Tickets (IDR 350,000)</option>
                     </select>
                 </div>
 
                 <div id="holderNamesSection" class="space-y-3 pt-2 border-t border-gray-800">
                     <label class="block text-xs font-semibold text-gold-400">
-                        <i class="fa-solid fa-user-pen mr-1"></i> Nama Pemegang Tiket (Masing-Masing) *
+                        <i class="fa-solid fa-user-pen mr-1"></i> Ticket Holder Name (For Each) *
                     </label>
                     <div id="holderInputsContainer" class="space-y-2">
-                        <!-- Render Otomatis -->
+                        <!-- Auto Rendered Inputs -->
                     </div>
                 </div>
 
                 <button type="submit" id="btnSubmitForm" class="w-full bg-gold-500 hover:bg-gold-600 text-black font-bold py-3 rounded-xl transition duration-200 mt-2">
-                    Lanjut ke Instruksi Pembayaran
+                    Proceed to Payment Instructions
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- MODAL 2: INSTRUKSI & UPLOAD BUKTI TRANSFER -->
+    <!-- MODAL 2: PAYMENT INSTRUCTION & PROOF UPLOAD -->
     <div id="proofModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
         <div class="glass-panel max-w-lg w-full rounded-2xl p-6 sm:p-8 space-y-6 relative max-h-[90vh] overflow-y-auto">
             <button onclick="closeProofModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
@@ -306,66 +304,64 @@
 
             <div class="space-y-1 border-b border-gray-800 pb-3">
                 <div class="inline-block bg-gold-500/20 text-gold-400 text-[10px] font-bold px-2.5 py-0.5 rounded-full mb-1">
-                    Langkah Terakhir
+                    Final Step
                 </div>
-                <h3 class="font-heading text-xl font-bold text-gold-400">Upload Bukti Transfer &amp; Konfirmasi</h3>
-                <p class="text-xs text-gray-400">Selesaikan transfer dan upload bukti pembayaran untuk diarahkan ke WhatsApp Admin.</p>
+                <h3 class="font-heading text-xl font-bold text-gold-400">Upload Payment Proof &amp; Confirm</h3>
+                <p class="text-xs text-gray-400">Complete your transfer and upload the payment proof to be redirected to WhatsApp Admin.</p>
             </div>
 
-            <!-- Rincian Tagihan -->
+            <!-- Billing Details -->
             <div class="bg-cardbg p-4 rounded-xl border border-gold-500/30 space-y-3">
                 <div class="flex justify-between items-center text-xs text-gray-400 border-b border-gray-800 pb-2">
-                    <span>Rincian Pesanan:</span>
-                    <span id="summaryQtyText" class="font-semibold text-white">1 Tiket</span>
+                    <span>Order Details:</span>
+                    <span id="summaryQtyText" class="font-semibold text-white">1 Ticket</span>
                 </div>
                 <div class="flex justify-between items-center">
-                    <span class="text-xs text-gray-300 font-semibold">Total Pembayaran:</span>
+                    <span class="text-xs text-gray-300 font-semibold">Total Payment:</span>
                     <div class="text-right">
-                        <span id="summaryTotalRupiah" class="font-heading text-lg font-bold text-gold-400 block">Rp 70.000</span>
+                        <span id="summaryTotalRupiah" class="font-heading text-lg font-bold text-gold-400 block">IDR 70,000</span>
                     </div>
                 </div>
             </div>
 
-            <!-- Info Rekening -->
+            <!-- Account Info -->
             <div class="bg-cardbg p-4 rounded-xl border border-gray-800 text-xs space-y-2">
-                <p class="text-gray-400 font-medium">Rekening Tujuan Transfer (SEABANK):</p>
+                <p class="text-gray-400 font-medium">Destination Account (SEABANK):</p>
                 <p class="text-sm font-bold text-white">Bank SEABANK (Indonesia)</p>
                 <p class="font-mono text-gold-400 font-bold text-base">901525253273</p>
-                <p class="text-gray-400">a.n. MUHAMMAD SAEPUL BAHRI</p>
+                <p class="text-gray-400">Account Holder: MUHAMMAD SAEPUL BAHRI</p>
             </div>
 
-            <!-- FORM UPLOAD BUKTI -->
+            <!-- UPLOAD FORM -->
             <form onsubmit="finalizeOrderAndRedirect(event)" class="space-y-3 pt-2 border-t border-gray-800">
                 <div>
                     <label class="block text-xs font-semibold text-gold-400 mb-1">
-                        <i class="fa-solid fa-receipt mr-1"></i> Upload Foto Bukti Pembayaran *
+                        <i class="fa-solid fa-receipt mr-1"></i> Upload Payment Proof Photo *
                     </label>
                     <input type="file" id="paymentProof" accept="image/jpeg, image/png, image/webp" required onchange="validateImageFile(this)" class="w-full text-xs text-gray-400 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-xs file:font-semibold file:bg-gold-500 file:text-black hover:file:bg-gold-600 cursor-pointer bg-gray-900 border border-gray-700 rounded-lg">
                     <p class="text-[11px] text-gray-400 mt-1">
-                        Format: JPG, PNG, WEBP. Maksimal ukuran: <strong>2 MB</strong>.
+                        Format: JPG, PNG, WEBP. Max size: <strong>2 MB</strong>.
                     </p>
                     <p id="fileErrorMsg" class="text-[11px] text-red-400 hidden font-semibold mt-1"></p>
                 </div>
 
                 <button type="submit" id="btnFinalSubmit" class="w-full bg-green-600 hover:bg-green-500 text-white font-bold py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 transition duration-200 text-center shadow-lg text-sm">
                     <i class="fa-brands fa-whatsapp text-lg"></i>
-                    <span>Konfirmasi Admin via WhatsApp</span>
+                    <span>Confirm via Admin WhatsApp</span>
                 </button>
             </form>
         </div>
     </div>
 
-    <!-- SCRIPT JAVASCRIPT -->
+    <!-- JAVASCRIPT LOGIC -->
     <script>
         const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyrpJkydxov6jjIKlE5JnrekEkulIape2arPmeFCkJEYTHF-ydOe78c5bXIeQ5jlgyW/exec";
-
         const TICKET_PRICE_IDR = 70000;
-    
-
         let globalOrderData = {};
 
         function openBookingModal() {
             document.getElementById('bookingModal')?.classList.remove('hidden');
+            renderHolderInputs(); // Ensure inputs are rendered upon opening
         }
 
         function closeBookingModal() {
@@ -376,7 +372,7 @@
             document.getElementById('proofModal')?.classList.add('hidden');
         }
 
-        // VALIDASI FILE GAMBAR (Maksimal 2 MB & Format gambar sah)
+        // IMAGE FILE VALIDATION (Max 2 MB & valid formats)
         function validateImageFile(input) {
             const fileErrorMsg = document.getElementById('fileErrorMsg');
             const file = input.files[0];
@@ -386,14 +382,14 @@
                 const validTypes = ['image/jpeg', 'image/png', 'image/webp'];
 
                 if (!validTypes.includes(file.type)) {
-                    fileErrorMsg.innerText = "❌ Format file tidak valid! Harap upload file gambar (JPG, PNG, WEBP).";
+                    fileErrorMsg.innerText = "❌ Invalid file format! Please upload an image (JPG, PNG, WEBP).";
                     fileErrorMsg.classList.remove('hidden');
                     input.value = "";
                     return;
                 }
 
                 if (fileSizeMB > 2) {
-                    fileErrorMsg.innerText = `❌ Ukuran file terlalu besar (${fileSizeMB.toFixed(1)} MB). Maksimal ukuran file adalah 2 MB!`;
+                    fileErrorMsg.innerText = `❌ File size is too large (${fileSizeMB.toFixed(1)} MB). Maximum size is 2 MB!`;
                     fileErrorMsg.classList.remove('hidden');
                     input.value = "";
                     return;
@@ -408,14 +404,16 @@
             const container = document.getElementById('holderInputsContainer');
             container.innerHTML = '';
             for (let i = 1; i <= qty; i++) {
-                container.innerHTML += `<input type="text" required placeholder="Nama Pemegang Tiket ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">`;
+                container.innerHTML += `<input type="text" required placeholder="Ticket Holder Name ${i}" class="holder-name-input w-full bg-gray-900 border border-gray-700 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-gold-500">`;
             }
         }
+        
+        // Render initially just in case
         renderHolderInputs();
 
-        // 1. KETIKA SUBMIT FORMULIR AWAL
+        // 1. WHEN FIRST FORM IS SUBMITTED
         function submitOrder(event) {
-            event.preventDefault();
+            event.preventDefault(); // Mencegah reload halaman
 
             const name = document.getElementById('custName').value;
             const email = document.getElementById('custEmail').value;
@@ -435,30 +433,30 @@
                 whatsapp: phone,
                 jumlah_tiket: qty,
                 nama_pemegang: holderNames,
-                total_harga: `Rp ${totalRupiah}`,
+                total_harga: `IDR ${totalRupiah}`,
                 metode_pembayaran: "SEABANK"
             };
 
-            document.getElementById('summaryQtyText').innerText = `${qty} Tiket`;
-            document.getElementById('summaryTotalRupiah').innerText = `Rp ${totalRupiah}`;
+            document.getElementById('summaryQtyText').innerText = `${qty} Ticket${qty > 1 ? 's' : ''}`;
+            document.getElementById('summaryTotalRupiah').innerText = `IDR ${totalRupiah}`;
 
             closeBookingModal();
             document.getElementById('proofModal').classList.remove('hidden');
         }
 
-// 2. KETIKA UPLOAD BUKTI DAN KLIK KIRIM (DIJAMIN TEMBUS)
+        // 2. WHEN UPLOADING PROOF AND CLICKING CONFIRM
         function finalizeOrderAndRedirect(event) {
             event.preventDefault();
 
             const fileInput = document.getElementById('paymentProof');
             if (!fileInput.files[0]) {
-                alert("Harap upload foto bukti transfer terlebih dahulu!");
+                alert("Please upload the payment proof photo first!");
                 return;
             }
 
             const btnFinal = document.getElementById('btnFinalSubmit');
             btnFinal.disabled = true;
-            btnFinal.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Menyimpan Data &amp; Membuka WhatsApp...`;
+            btnFinal.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Saving Data &amp; Opening WhatsApp...`;
 
             const file = fileInput.files[0];
             const reader = new FileReader();
@@ -468,7 +466,7 @@
                 img.src = uploadEvent.target.result;
                 
                 img.onload = async function() {
-                    // Kompres gambar agar ukuran file kecil dan tidak timeout
+                    // Compress the image to avoid timeout
                     const canvas = document.createElement('canvas');
                     let width = img.width;
                     let height = img.height;
@@ -496,7 +494,7 @@
                         data: base64Data
                     };
 
-                    // Kirim data menggunakan fetch teks biasa (bypass CORS Google Script)
+                    // Send data using plain text fetch (bypass Google Script CORS)
                     try {
                         await fetch(GOOGLE_SCRIPT_URL, {
                             method: 'POST',
@@ -504,14 +502,14 @@
                             body: JSON.stringify(globalOrderData)
                         });
                     } catch (err) {
-                        console.log("Pengiriman latar belakang:", err);
+                        console.log("Background transmission error:", err);
                     }
 
-                    // Susun pesan WhatsApp Admin
+                    // Compose WhatsApp Admin message
                     const adminWA = "6282116953115";
-                    const waText = `Halo Admin Al Mokhtar, saya telah mengisi data pemesanan dan mengirimkan bukti pembayaran.\n\n*ID Pesanan:* ${globalOrderData.order_id}\n*Nama Pemesan:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Jumlah Tiket:* ${globalOrderData.jumlah_tiket} Tiket\n*Pemegang Tiket:* ${globalOrderData.nama_pemegang}\n*Total Pembayaran:* ${globalOrderData.total_harga}\n*Metode:* SEABANK\n\nBukti transfer sudah saya upload di sistem. Mohon diverifikasi dan dikirimkan E-Tiket resminya ya. Terima kasih!`;
+                    const waText = `Hello Al Mokhtar Admin, I have filled out the booking data and uploaded the payment proof.\n\n*Order ID:* ${globalOrderData.order_id}\n*Booker Name:* ${globalOrderData.nama_pemesan}\n*Email:* ${globalOrderData.email}\n*Number of Tickets:* ${globalOrderData.jumlah_tiket} Ticket(s)\n*Ticket Holder(s):* ${globalOrderData.nama_pemegang}\n*Total Payment:* ${globalOrderData.total_harga}\n*Payment Method:* SEABANK\n\nThe transfer proof has been uploaded to the system. Please verify and send the official E-Ticket. Thank you!`;
 
-                    // Jeda 1 detik agar data masuk ke Spreadsheet, lalu buka WhatsApp
+                    // Wait 1 second to ensure Spreadsheet processing, then open WhatsApp
                     setTimeout(() => {
                         closeProofModal();
                         window.location.href = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
@@ -522,8 +520,7 @@
             reader.readAsDataURL(file);
         }
 
-
-        // Timer Hitung Mundur
+        // Countdown Timer
         const targetDate = new Date("October 1, 2026 23:59:59").getTime(); 
         setInterval(() => {
             const distance = targetDate - new Date().getTime();

@@ -603,35 +603,38 @@ function finalizeOrderAndRedirect(event) {
                 data: base64Data
             };
 
-     // Prepare WhatsApp Link
-const adminWA = "201552295993";
-const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
-const encodedText = encodeURIComponent(waText);
+    // Prepare WhatsApp Link
+try {
+    const adminWA = "201552295993";
+    const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
+    const encodedText = encodeURIComponent(waText);
 
-const ua = navigator.userAgent;
-const isAndroid = /Android/i.test(ua);
-const isIOS = /iPhone|iPad|iPod/i.test(ua);
+    const ua = navigator.userAgent;
+    const isAndroid = /Android/i.test(ua);
+    const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-if (isAndroid) {
-    // Android: Gunakan api.whatsapp.com (Chrome Android akan otomatis melempar ke App WA)
-    const androidUrl = `https://api.whatsapp.com/send?phone=${adminWA}&text=${encodedText}`;
-    if (waWindow && !waWindow.closed) {
-        waWindow.location.href = androidUrl;
-    } else {
-        window.location.href = androidUrl;
+    // Jika dari HP (Android / iOS), tutup tab waWindow bekas popup blocker agar tidak menggantung
+    if ((isAndroid || isIOS) && typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
+        waWindow.close();
     }
-} else if (isIOS) {
-    // iOS (Safari): Gunakan skema whatsapp:// langsung
-    if (waWindow && !waWindow.closed) waWindow.close();
-    window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
-} else {
-    // Desktop / Laptop: Buka WhatsApp Web / Desktop App
-    const desktopUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
-    if (waWindow && !waWindow.closed) {
-        waWindow.location.href = desktopUrl;
+
+    if (isAndroid) {
+        // Gunakan Intent khusus Android agar Chrome memanggil aplikasi WA secara langsung tanpa lewat web
+        window.location.href = `intent://send?phone=${adminWA}&text=${encodedText}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+    } else if (isIOS) {
+        // Skema deep link khusus Safari iOS
+        window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
     } else {
-        window.open(desktopUrl, '_blank');
+        // Desktop / Laptop: Buka WhatsApp Web / Desktop App
+        const desktopUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
+        if (typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
+            waWindow.location.href = desktopUrl;
+        } else {
+            window.open(desktopUrl, '_blank');
+        }
     }
+} catch (e) {
+    console.error("WhatsApp redirect error:", e);
 }
             // 3. Kirim data ke Google Apps Script di background
             try {

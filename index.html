@@ -602,26 +602,36 @@ function finalizeOrderAndRedirect(event) {
                 data: base64Data
             };
 
-        // Prepare WhatsApp Link
+     // Prepare WhatsApp Link
 const adminWA = "201552295993";
 const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
 const encodedText = encodeURIComponent(waText);
 
-// Cek jika dibuka dari HP (Android / iOS)
-const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+const ua = navigator.userAgent;
+const isAndroid = /Android/i.test(ua);
+const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-if (isMobile) {
-    // Langsung paksa buka aplikasi WhatsApp di HP
-    window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
-    if (waWindow && !waWindow.closed) waWindow.close(); // Tutup tab kosong jika sempat terbuka
-} else {
-    // Laptop/Desktop tetap via web
-    const waUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
+if (isAndroid) {
+    // Android: Gunakan api.whatsapp.com (Chrome Android akan otomatis melempar ke App WA)
+    const androidUrl = `https://api.whatsapp.com/send?phone=${adminWA}&text=${encodedText}`;
     if (waWindow && !waWindow.closed) {
-        waWindow.location.href = waUrl;
+        waWindow.location.href = androidUrl;
     } else {
-        window.open(waUrl, '_blank');
+        window.location.href = androidUrl;
     }
+} else if (isIOS) {
+    // iOS (Safari): Gunakan skema whatsapp:// langsung
+    if (waWindow && !waWindow.closed) waWindow.close();
+    window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
+} else {
+    // Desktop / Laptop: Buka WhatsApp Web / Desktop App
+    const desktopUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
+    if (waWindow && !waWindow.closed) {
+        waWindow.location.href = desktopUrl;
+    } else {
+        window.open(desktopUrl, '_blank');
+    }
+}
 }
             // 3. Kirim data ke Google Apps Script di background
             try {

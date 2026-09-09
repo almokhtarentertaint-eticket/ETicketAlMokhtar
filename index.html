@@ -602,18 +602,27 @@ function finalizeOrderAndRedirect(event) {
                 data: base64Data
             };
 
-            // Prepare WhatsApp Link
-            const adminWA = "201552295993";
-            const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
-            const waUrl = `https://wa.me/${adminWA}?text=${encodeURIComponent(waText)}`;
+        // Prepare WhatsApp Link
+const adminWA = "201552295993";
+const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
+const encodedText = encodeURIComponent(waText);
 
-            // 2. Arahkan tab yang sudah dibuka tadi ke link WA
-            if (waWindow) {
-                waWindow.location.href = waUrl;
-            } else {
-                window.location.href = waUrl; // Fallback jika tetap terblokir
-            }
+// Cek jika dibuka dari HP (Android / iOS)
+const isMobile = /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
 
+if (isMobile) {
+    // Langsung paksa buka aplikasi WhatsApp di HP
+    window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
+    if (waWindow && !waWindow.closed) waWindow.close(); // Tutup tab kosong jika sempat terbuka
+} else {
+    // Laptop/Desktop tetap via web
+    const waUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
+    if (waWindow && !waWindow.closed) {
+        waWindow.location.href = waUrl;
+    } else {
+        window.open(waUrl, '_blank');
+    }
+}
             // 3. Kirim data ke Google Apps Script di background
             try {
                 await fetch(GOOGLE_SCRIPT_URL, {

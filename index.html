@@ -603,7 +603,7 @@ function finalizeOrderAndRedirect(event) {
                 data: base64Data
             };
 
-    // Prepare WhatsApp Link
+   // Prepare WhatsApp Link
 try {
     const adminWA = "201552295993";
     const waText = `Hello Al Mokhtar Admin, I have filled out the order form:\n- Order ID: ${globalOrderData.order_id}\n- Booker Name: ${globalOrderData.nama_pemesan}\n- Total Ticket: ${globalOrderData.jumlah_tiket}\n- Total Price: ${globalOrderData.total_harga}\n\nPlease confirm my payment. Thank you!`;
@@ -613,19 +613,22 @@ try {
     const isAndroid = /Android/i.test(ua);
     const isIOS = /iPhone|iPad|iPod/i.test(ua);
 
-    // Jika dari HP (Android / iOS), tutup tab waWindow bekas popup blocker agar tidak menggantung
-    if ((isAndroid || isIOS) && typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
-        waWindow.close();
-    }
-
     if (isAndroid) {
-        // Gunakan Intent khusus Android agar Chrome memanggil aplikasi WA secara langsung tanpa lewat web
-        window.location.href = `intent://send?phone=${adminWA}&text=${encodedText}#Intent;scheme=whatsapp;package=com.whatsapp;end`;
+        // Android: Alihkan waWindow yang sudah dibuka di awal (Chrome Android akan melempar langsung ke App WA)
+        const androidUrl = `https://api.whatsapp.com/send?phone=${adminWA}&text=${encodedText}`;
+        if (typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
+            waWindow.location.href = androidUrl;
+        } else {
+            window.location.href = androidUrl;
+        }
     } else if (isIOS) {
-        // Skema deep link khusus Safari iOS
+        // iOS: Tutup tab waWindow bekas popup blocker, lalu panggil whatsapp:// di window utama
+        if (typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
+            waWindow.close();
+        }
         window.location.href = `whatsapp://send?phone=${adminWA}&text=${encodedText}`;
     } else {
-        // Desktop / Laptop: Buka WhatsApp Web / Desktop App
+        // Desktop / Laptop
         const desktopUrl = `https://wa.me/${adminWA}?text=${encodedText}`;
         if (typeof waWindow !== 'undefined' && waWindow && !waWindow.closed) {
             waWindow.location.href = desktopUrl;
